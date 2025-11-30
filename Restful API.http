@@ -18,7 +18,6 @@ POST {{rootURL}}/api/books //We set here out URL, Then we use the Content-Type i
 //Specifying here the Data we are sending to the API
 Content-Type: application/json
 {
-  "id": 4,
   "title": "New Book",
   "author": "Alex Soliven",
   "yearPubished": 1998
