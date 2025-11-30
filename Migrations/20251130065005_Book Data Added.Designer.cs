@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Restful_API.Data;
 
@@ -10,9 +11,11 @@ using Restful_API.Data;
 namespace Restful_API.Migrations
 {
     [DbContext(typeof(RestAPIContext))]
-    partial class RestAPIContextModelSnapshot : ModelSnapshot
+    [Migration("20251130065005_Book Data Added")]
+    partial class BookDataAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
