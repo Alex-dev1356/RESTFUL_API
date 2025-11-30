@@ -33,3 +33,6 @@ Content-Type: application/json
   "author": "Alexander Soliven",
   "yearPubished": 1999
 }
+
+###
+DELETE {{rootURL}}/api/books/3

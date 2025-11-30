@@ -11,7 +11,7 @@ namespace Restful_API.Controllers
     public class BooksController : ControllerBase
     {
         //Creating some data for the Books
-        static List<Book> books = new List<Book>//Making the List STATIC, this way we can access it without creating an instance of the class
+        static readonly List<Book> books = new List<Book>//Making the List STATIC, this way we can access it without creating an instance of the class
                                                 //meaning it is only created once and shared across all instances of the class
                                                 //If we don't make it static, every time we create an instance of the class, a new list will be created and the data will be lost
         {
@@ -101,6 +101,20 @@ namespace Restful_API.Controllers
             bookId.YearPubished = updatedBook.YearPubished;
 
             return NoContent(); //This returns a Status Code of 204 which means there was no content returned, but rather ONLY UPDATED
+        }
+
+        //Creating an HTTP DELETE method to delete an existing book
+        [HttpDelete("{id}")]
+        public IActionResult DeleteBook(int id)
+        {
+            var bookId = books.FirstOrDefault(b => b.ID == id);
+
+            if (bookId == null)
+                return NotFound();
+
+            books.Remove(bookId);
+
+            return NoContent();
         }
     }
 }
