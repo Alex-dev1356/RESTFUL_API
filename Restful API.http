@@ -1,6 +1,14 @@
-@Restful_API_HostAddress = http://localhost:5112
+@rootURL = http://localhost:5112
 
-GET {{Restful_API_HostAddress}}/weatherforecast/
+GET {{rootURL}}/weatherforecast/
 Accept: application/json
 
-###
+### //This is used as a separator between requests
+
+GET {{rootURL}}/api/books //We set here out URL, Then we specify the format we want the response to be in which is JSON
+Accept: application/json 
+
+###//This is used as a separator between requests
+
+GET {{rootURL}}/api/books/2 //We set here out URL, Then we specify the format we want the response to be in which is JSON
+Accept: application/json
