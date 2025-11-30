@@ -70,5 +70,19 @@ namespace Restful_API.Controllers
 
             //return NotFound(); //Returning a 404 Not Found status code if the book is not found
         }
+
+        //Creating an HTTP POST method to add a new book
+        [HttpPost]
+        public ActionResult<Book> AddBook(Book newBook)
+        {
+            if(newBook == null)
+                return BadRequest(); //Returning a 400 Bad Request status code if the book is null
+            
+            books.Add(newBook); //Adding the new book to the list
+            return CreatedAtAction(nameof(GetBookById), new {id = newBook.ID }, newBook); //Returning a 201 Created status code if successfull
+                                                                                          //1st Parameter: The action TO GET the newly created book (GetBookById)
+                                                                                          //2nd Parameter: The route values (the id of the newly created book)
+                                                                                          //3rd Parameter: Returning the newly created book
+        }
     }
 }

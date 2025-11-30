@@ -12,3 +12,13 @@ Accept: application/json
 
 GET {{rootURL}}/api/books/2 //We set here out URL, Then we specify the format we want the response to be in which is JSON
 Accept: application/json
+
+###
+POST {{rootURL}}/api/books //We set here out URL, Then we use the Content-Type instead of Accept then the format we want the response to be in which is JSON
+Content-Type: application/json
+{
+  "id": 4,
+  "title": "New Book",
+  "author": "Alex Soliven",
+  "yearPubished": 1998
+}
