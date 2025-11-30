@@ -328,3 +328,22 @@ Controller Sends JSON Response → Returns structured data with status codes.
 Client Receives Response → Displays results in app UI.
 
 This diagram is a visual quick reference for how every request flows end-to-end. It’s especially useful when debugging or explaining architecture to teammates.
+
+
+
+-------------------
+![REST API Connection to Database]
+Installing these packages via NuGet Package Manager Console:
+```bash
+Install-Package Microsoft.EntityFrameworkCore => to use the DbContext and EF Core features
+Install-Package Microsoft.EntityFrameworkCore.SqlServer => to connect to SQL Server databases
+Install-Package Microsoft.EntityFrameworkCore.Tools => to enable EF Core command-line tools for migrations and scaffolding
+```
+
+To do the Migration Go to: 
+Tools -> NuGet Package Manager -> Package Manager Console
+Then Run these commands:
+Add-Migration "NameOfMigration(ex.book model added)" then hit 'Enter'
+
+Then to update our Database run:
+Update-Database then hit 'Enter' //This will apply the migration to the database
