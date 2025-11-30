@@ -54,7 +54,7 @@ namespace Restful_API.Controllers
                                                              //then finding the ID that matches the id parameter (b => b.ID == id)
                                                              //Finding the book with the specific ID
 
-            if (book == null) 
+            if (book == null)
                 return NotFound(); //Returning a 404 Not Found status code if the book is not found
 
             return Ok(book); //Returning the books with a 200 OK status code if successfull
@@ -75,14 +75,32 @@ namespace Restful_API.Controllers
         [HttpPost]
         public ActionResult<Book> AddBook(Book newBook)
         {
-            if(newBook == null)
+            if (newBook == null)
                 return BadRequest(); //Returning a 400 Bad Request status code if the book is null
-            
+
             books.Add(newBook); //Adding the new book to the list
-            return CreatedAtAction(nameof(GetBookById), new {id = newBook.ID }, newBook); //Returning a 201 Created status code if successfull
-                                                                                          //1st Parameter: The action TO GET the newly created book (GetBookById)
-                                                                                          //2nd Parameter: The route values (the id of the newly created book)
-                                                                                          //3rd Parameter: Returning the newly created book
+            return CreatedAtAction(nameof(GetBookById), new { id = newBook.ID }, newBook); //Returning a 201 Created status code if successfull
+                                                                                           //1st Parameter: The action TO GET the newly created book (GetBookById)
+                                                                                           //2nd Parameter: The route values (the id of the newly created book)
+                                                                                           //3rd Parameter: Returning the newly created book
+        }
+
+        //Creating an HTTP PUT method to update an existing book
+        [HttpPut("{id}")]
+        public IActionResult UpdateBook(int id, Book updatedBook) //We used IActionResult becuase we're not returning any object, were returning STATUS CODE
+        {
+            var bookId = books.FirstOrDefault(b => b.ID == id);
+
+            if (bookId == null)
+                return NotFound();
+
+            //If the book is existing based on the ID passed, we're updating the value of the existing book to the value of the updated book.
+            bookId.ID = updatedBook.ID;
+            bookId.Author = updatedBook.Author;
+            bookId.Title = updatedBook.Title;
+            bookId.YearPubished = updatedBook.YearPubished;
+
+            return NoContent(); //This returns a Status Code of 204 which means there was no content returned, but rather ONLY UPDATED
         }
     }
 }

@@ -23,3 +23,13 @@ Content-Type: application/json
   "author": "Alex Soliven",
   "yearPubished": 1998
 }
+
+###
+PUT {{rootURL}}/api/books/4
+Content-Type: application/json
+{
+  "id": 4,
+  "title": "New Updated Book",
+  "author": "Alexander Soliven",
+  "yearPubished": 1999
+}
