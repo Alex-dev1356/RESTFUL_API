@@ -15,6 +15,7 @@ Accept: application/json
 
 ###
 POST {{rootURL}}/api/books //We set here out URL, Then we use the Content-Type instead of Accept then the format we want the response to be in which is JSON
+//Specifying here the Data we are sending to the API
 Content-Type: application/json
 {
   "id": 4,
